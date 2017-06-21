@@ -1,0 +1,19 @@
+body{
+    padding: 3%
+}
+.div_form {
+    width: 50%;
+    padding-top: 5%;
+    float: left
+}
+
+.participantes{
+    padding-top: 5%;
+}
+
+.head img{
+    width: 10%;
+    float: left;
+    padding-right: 3%;
+    padding-left: 3%;
+}
