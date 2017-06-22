@@ -1,19 +1,20 @@
-body{
-    padding: 3%
-}
-.div_form {
-    width: 50%;
-    padding-top: 5%;
-    float: left
+img{
+    width: 125px;
 }
 
-.participantes{
-    padding-top: 5%;
+.logo{
+    border-bottom: 0px solid black !important;
 }
 
-.head img{
-    width: 10%;
-    float: left;
-    padding-right: 3%;
-    padding-left: 3%;
+.row{
+    margin-top: 2%;
+    border-bottom: 1px solid #eae4e4;
+}
+
+i{
+   margin-left: 1%;
+}
+
+.error{
+    border: 1px solid red !important;
 }
