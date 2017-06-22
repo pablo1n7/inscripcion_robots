@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="statics/css/normalize.css">
+        <link rel="stylesheet" href="statics/css/skeleton.css">
+        <link rel="stylesheet" href="statics/css/custom.css">
+        <link rel="stylesheet" href="statics/css/font-awesome.min.css">
+        
+        <link rel="stylesheet" href="statics/css/alertify.css">
+        <link rel="stylesheet" href="statics/css/themes/bootstrap.css">
+        <script src="statics/js/alertify.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="statics/js/custom.js"></script>
+    </head>
+    <body>
+
+      <!-- INICIO DEL MEMBRETE -->
+
+    <div class="container">
+
+        <!-- columns should be the immediate child of a .row -->
+        <div class="row logo">
+            <div align="center" class="one columns"><img src="statics/images/robot_1.png"></div>
+            <div align="center" class="ten columns"><h3>Campeonato de Robótica y Hackathon 2017</h3></div>
+        </div>
+
+        <!-- just use a number and class 'column' or 'columns' -->
+        <div class="row">
+            <div class="eight column"><h5>Formulario de Inscripción</h5></div>
+        </div>
+
+        <div class="row">
+            <!--<div align="center" class="six columns"> -->
+            <div align="center" class="six column">
+                <form>
+                        <div class="group">
+                            <h5>Datos del Robot</h5>
+                            <div class="six column">
+                                <label for="robot_nombre">*Nombre</label>
+                                <input class="u-full-width obligatorio" type="text" validador="robot" placeholder="3CPO" id="robot_nombre">
+                            </div>
+                            <div class="six column">
+                                <label for="robot_peso">*Peso (kg.)</label>
+                                <input class="u-full-width obligatorio" type="number" validador="number" placeholder="10" id="robot_peso">
+                            </div>
+                            <div class="six column">
+                                <label for="categoria_input">Categoria</label>
+                                <select class="u-full-width" id="categoria_input">
+                                    <option value="Option 1">Seguidor de Línea</option>
+                                    <option value="Option 2">Sumo</option>
+                                    <option value="Option 3">Mini-Sumo</option>
+                                    <option value="Option 4">Futbol</option>
+                                </select>
+                            </div>
+                            <div class="six column">
+                                <label for="escuela_input">Escuela</label>
+                                <select class="u-full-width" id="escuela_input">
+                                    <option value="Option 1">724</option>
+                                    <option value="Option 2">723</option>
+                                    <option value="Option 3">722</option>
+                                    <option value="Option 4">721</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+
+            </div>
+            <!-- <div align="center" class="six columns">2/3</div> -->
+        </div>
+        
+        <div class="row logo">
+            <div align="center" class="eleven column">
+                <h5 class="">Participantes</h5>
+                <div align="right">
+                    <div class="controles-tabla">
+                            <i id="control_mas" class="fa fa-plus" aria-hidden="true"></i>
+                            <i id="control_menos" class="fa fa-minus" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div style="overflow-x:auto;">
+                    <table id="tabla_participantes">
+                        <thead>
+                            <tr>
+                            <th>Rol</th>
+                            <th>Apellido y Nombre</th>
+                            <th>DNI</th>
+                            <th>E-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="participante_obligatorio">
+                                <td> * Profesor/Responsable</td>
+                                <td><input class="obligatorio" validador="text" type="text" placeholder="Gonzales, Gerardo"></td>
+                                <td><input class="obligatorio" validador="number" type="number" placeholder="37067513"></td>
+                                <td><input class="obligatorio" validador="email" type="email" placeholder="geral@mail.com"></td>
+                            </tr>
+                            <tr class="participante_obligatorio">
+                                <td> * Alumno/Representante</td>
+                                <td><input class="obligatorio" validador="text" type="text" placeholder="Gonzales, Gerardo"></td>
+                                <td><input class="obligatorio" validador="number" type="number" placeholder="37067513"></td>
+                                <td><input class="obligatorio" validador="email" type="email" placeholder="geral@mail.com"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div align="center" class="eleven column">
+                <input id="inscribir" class="button-primary" type="button" value="Inscribir">
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

@@ -4,7 +4,11 @@ $( document ).ready(function() {
 
     $("#control_menos").click(control_menos);
 
-    $("#inscribir").click(enviar);
+    $("#inscribir").click(function() {
+        alertify.confirm('Está seguro ? ', 'Por favor revise todos los campos antes de enviar!', 
+                  function(){ enviar(); }
+                , function(){});
+    });
 });
 
 function control_menos() {
@@ -67,9 +71,10 @@ function enviar() {
             type: 'POST',
             success: function(response) {
                 console.log(response);
+                var notification = alertify.notify('Robot registrado con exito!', 'success', 10, function(){  location.reload() });
             },
             error: function(error) {
-                console.log(error);
+                var notification = alertify.notify('Ups ocurrio un error', 'error', 10, function(){  console.log('dismissed'); });
             }
         });
 

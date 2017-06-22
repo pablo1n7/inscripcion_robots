@@ -18,18 +18,17 @@ class Robot(object):
         self.escuela = data["escuela"]
         self.categoria = data["categoria"]
         self.alumnos = [type('', (object, ), a)() for a in data["alumnos"]]
+        self.validar()
 
     @classmethod
-    def get_all(cls):
-        client = MongoClient('mongodb://localhost:27017/')
-        db = client.comprobot
+    def get_all(cls,db):
         return [Robot(r) for r in list(db.robots.find({}))]
 
-
-    def guardar(self):
-        client = MongoClient('mongodb://localhost:27017/')
-        db = client.comprobot
-        return db.robots.insert_one(self.json_serialize).inserted_id
+    def validar(self):
+        pass
+    
+    def guardar(self,db):
+        return db.robots.insert_one(self.json_serialize()).inserted_id
         
     def json_serialize(self):
         dic=self.__dict__

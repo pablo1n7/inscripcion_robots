@@ -18,3 +18,7 @@ i{
 .error{
     border: 1px solid red !important;
 }
+
+form{
+    width: 70%;
+}
