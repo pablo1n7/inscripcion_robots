@@ -9,7 +9,7 @@ $( document ).ready(function() {
 
 function control_menos() {
     console.log("menos");
-    ultima_fila = $('#tabla_participantes tr:last');
+    var ultima_fila = $('#tabla_participantes tr:last');
     if (ultima_fila.hasClass("participante_obligatorio")) {
         return;
     }
@@ -23,11 +23,11 @@ function control_mas() {
 
 tipo={"robot":/^\s*[0-9a-zA-Z,á,é,í,ó,ú,â,ê,ô,ã‌​,õ,ç,Á,É,Í,Ó,Ú,Â,Ê,Ô‌​,Ã,Õ,Ç,ü,ñ,Ü,Ñ][0-9a-zA-Z,á,é,í,ó,ú,â,ê,ô,ã‌​,õ,ç,Á,É,Í,Ó,Ú,Â,Ê,Ô‌​,Ã,Õ,Ç,ü,ñ,Ü,Ñ ]*$/,"text":/^(([A-Za-z,á,é,í,ó,ú,â,ê,ô,ã‌​,õ,ç,Á,É,Í,Ó,Ú,Â,Ê,Ô‌​,Ã,Õ,Ç,ü,ñ,Ü,Ñ,]+[\,\']?)*([A-Za-z,á,é,í,ó,ú,â,ê,ô,ã‌​,õ,ç,Á,É,Í,Ó,Ú,Â,Ê,Ô‌​,Ã,Õ,Ç,ü,ñ,Ü,Ñ,]+)?\s)+([A-Za-z,á,é,í,ó,ú,â,ê,ô,ã‌​,õ,ç,Á,É,Í,Ó,Ú,Â,Ê,Ô‌​,Ã,Õ,Ç,ü,ñ,Ü,Ñ,]+[\,\']?)*([A-Za-z,á,é,í,ó,ú,â,ê,ô,ã‌​,õ,ç,Á,É,Í,Ó,Ú,Â,Ê,Ô‌​,Ã,Õ,Ç,ü,ñ,Ü,Ñ,]+)?$/,"number":/^\d+$/,"email":/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i};
 function checkear() {
-    campos_obligatorios = $(".obligatorio");
-    valido = true;
+    var campos_obligatorios = $(".obligatorio");
+    var valido = true;
     for (var i = 0; i < campos_obligatorios.length; i++) {
         console.log(campos_obligatorios[i].value);
-        exp = tipo[$(campos_obligatorios[i]).attr("validador")];
+        var exp = tipo[$(campos_obligatorios[i]).attr("validador")];
         if (!exp.test(campos_obligatorios[i].value)) {
             $(campos_obligatorios[i]).addClass("error");
             valido = false;
@@ -39,12 +39,12 @@ function checkear() {
 }
 
 function empaquetar(){
-        campos_obligatorios = $(".obligatorio");
-        robot ={};
+        var campos_obligatorios = $(".obligatorio");
+        var robot ={};
         robot.nombre = campos_obligatorios[0].value;
         robot.peso = campos_obligatorios[1].value
-        robot.categoria = "categoria";
-        robot.escuela = "escuela";
+        robot.categoria = $("#categoria_input")[0].selectedOptions[0].innerHTML;
+        robot.escuela = $("#escuela_input")[0].selectedOptions[0].innerHTML;
         robot.profesor = {"nombre":campos_obligatorios[2].value,"dni":campos_obligatorios[3].value,"email":campos_obligatorios[4].value}
         robot.representante = {"nombre":campos_obligatorios[5].value,"dni":campos_obligatorios[6].value,"email":campos_obligatorios[7].value}
         robot.alumnos = [];
@@ -58,7 +58,20 @@ function empaquetar(){
 function enviar() {
     if(checkear()){
         console.log("envio listo");
-        robot = empaquetar();
+        var robot = empaquetar();
+        $.ajax({
+            url: '/inscribirRobot',
+            contentType: 'application/json',
+            dataType : 'json',
+            data: JSON.stringify(robot),
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
 
         
     }
